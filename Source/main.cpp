@@ -33,10 +33,15 @@
 
 #include "enemyTank.h"
 #include "jewel.h"
+#include "lighting.h"
 
 //#include "player.h"
 //#include <string>
 using namespace std;
+
+
+LightEmitter lightpoint(1,50);
+
 
 int bSpeed = 100;
 
@@ -552,6 +557,9 @@ float maxFolders = 100.0f;
 					case SDL_CONTROLLERAXISMOTION:
 						player1.OnControllerAxis(event.caxis);
 						break;
+					case SDL_KEYDOWN:
+						player1.OnKeyboardPress(event.key);
+						break;
 					}
 				}
 
@@ -578,7 +586,9 @@ float maxFolders = 100.0f;
 
 
 
-
+				//LightUpdate
+				cout << player1.center.x << endl << player1.center.y << endl;
+				lightpoint.Update(player1.center);
 
 
 
@@ -857,6 +867,11 @@ float maxFolders = 100.0f;
 						explodeList[i].Draw(renderer);
 					}
 				}
+
+
+				lightpoint.Draw(renderer);
+
+
 
 				//SDL Render present
 				SDL_RenderPresent(renderer);

@@ -93,6 +93,7 @@ public:
 	void Draw(SDL_Renderer*renderer);
 	void OnControllerAxis(const SDL_ControllerAxisEvent event);
 	void OnControllerButton(const SDL_ControllerButtonEvent event);
+	void OnKeyboardPress(const SDL_KeyboardEvent event);
 	~Player();
 
 	//update score method

@@ -365,6 +365,26 @@ void Player::OnControllerAxis(const SDL_ControllerAxisEvent event)
 		}
 	}
 }
+
+void Player::OnKeyboardPress(const SDL_KeyboardEvent event)
+{
+	if(event.type == SDL_KEYDOWN)
+	{
+		if (event.keysym.sym == SDLK_w)
+		{
+			yDir = -1.0f;
+		}
+		if (event.keysym.sym == SDLK_s)
+		{
+			yDir = 1.0f;
+		}
+		else
+		{
+			xDir = 0.0f;
+			yDir = 0.0f;
+		}
+	}
+}
 Player::~Player()
 {
 	SDL_DestroyTexture(texture);
